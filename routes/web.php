@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\PhotosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('photos');
+});
+
+Route::group(['middleware' => 'auth'], function (){
+    Route::prefix('/user/')->group(function (){
+        Route::get('GalleryCreate',[GalleryController::class,'create']);
+    });
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// photo Gallery
+Route::get('/photos', [PhotosController::class, 'index'])->name('photos');
+Route::get('/photo-detail', [PhotosController::class, 'photo_detail'])->name('photo-detail');
+
+
+//Video Gallery
+Route::get('/videos', [VideoController::class, 'index'])->name('videos');
+Route::get('/video-detail', [VideoController::class, 'video_detail'])->name('video-detail');
