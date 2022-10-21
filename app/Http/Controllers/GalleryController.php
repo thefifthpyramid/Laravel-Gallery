@@ -14,7 +14,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.gallery-profile');
     }
 
     /**
@@ -24,7 +24,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return "hi from gallery create";
+        //
     }
 
     /**

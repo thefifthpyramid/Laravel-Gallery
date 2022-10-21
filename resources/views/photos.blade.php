@@ -21,20 +21,21 @@
             </div>
         </div>
         <div class="row tm-mb-90 tm-gallery">
+            @foreach($photo_data as $data)
         	<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
                     <img src="{{asset('them/img/img-03.jpg')}}" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Clocks</h2>
+                        <h2>{{$data->title}}</h2>
                         <a href="{{url('photo-detail')}}">View more</a>
                     </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">18 Oct 2020</span>
+                    <span class="tm-text-gray-light">{{$data->created_at}}</span>
                     <span>9,906 views</span>
                 </div>
             </div>
-
+            @endforeach
         </div> <!-- row -->
         <div class="row tm-mb-90">
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">

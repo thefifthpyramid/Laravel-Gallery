@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\photos;
 use Illuminate\Http\Request;
+use App\Models\Gallery;
 
 class PhotosController extends Controller
 {
@@ -12,9 +13,9 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('photos');
+    public function index(){
+        $photo_data = photos::all();
+        return view('photos',compact('photo_data'));
     }
     public function photo_detail()
     {

@@ -15,12 +15,11 @@ use App\Http\Controllers\PhotosController;
 |
 */
 
-Route::get('/', function () {
-    return view('photos');
-});
+Route::get('/', [PhotosController::class, 'index'] );
 
 Route::group(['middleware' => 'auth'], function (){
     Route::prefix('/user/')->group(function (){
+        Route::get('profile',[GalleryController::class,'index']);
         Route::get('GalleryCreate',[GalleryController::class,'create']);
     });
 });
@@ -28,6 +27,9 @@ Route::group(['middleware' => 'auth'], function (){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//User Gallery
+//Route::get('/photos', [PhotosController::class, 'index'])->name('photos');
 
 // photo Gallery
 Route::get('/photos', [PhotosController::class, 'index'])->name('photos');
