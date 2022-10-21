@@ -57,6 +57,9 @@
     <!--
     TemplateMo 556 Catalog-Z
     https://templatemo.com/tm-556-catalog-z-->
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{asset('Them/css/mycss.css')}}">
+
 
 </head>
 <body>

@@ -1,93 +1,6 @@
 @extends('../layouts/user-layout')
 @section('content')
-<!-- PAGE -->
-<div id="page" class="hfeed site">
-    <!-- HEADER -->
-    <header id="masthead" class="header" role="banner">
-        <a class="menu-toggle toggle-link"></a>
-        <h1 class="site-title mobile-title">JACK ALLEN</h1>
-        <!-- header-wrap -->
-        <div class="header-wrap">
-            <img src="{{asset('Them/profile/images/site/avatar.jpg')}}" alt="avatar">
-            <h1 class="site-title">JACK ALLEN</h1>
-            <!-- NAV MENU -->
-            <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
-                <div class="nav-menu">
-                    <ul>
-                        <!-- InstanceBeginEditable name="Menu-Content" -->
-                        <li>
-                            <a href="#/home">
-                                <i class="pe-7s-home"></i>Home</a>
-                        </li>
-                        <li>
-                            <a href="#/about">
-                                <i class="pe-7s-user"></i>About Me</a>
-                        </li>
-                        <li>
-                            <a href="#/resume">
-                                <i class="pe-7s-id"></i>Resume</a>
-                        </li>
-                        <li>
-                            <a href="#/portfolio">
-                                <i class="pe-7s-glasses"></i>Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#/blog">
-                                <i class="pe-7s-notebook"></i>Blog</a>
-                        </li>
-                        <li>
-                            <a href="#/contact">
-                                <i class="pe-7s-call"></i>Contact</a>
-                        </li>
-                        <!-- InstanceEndEditable -->
-                    </ul>
-                </div>
-            </nav>
-            <!-- NAV MENU -->
-            <!-- SEARCH -->
-            <div class="header-search">
-                <form role="search" method="get" id="search-form" action="#">
-                    <input type="text" value="" name="s" id="search" placeholder="enter word">
-                    <input type="submit" id="search-submit" title="Search" value="→">
-                </form>
-            </div>
-            <!-- SEARCH -->
 
-            <!-- header-bottom -->
-            <div class="header-bottom">
-
-                <!-- SOCIAL -->
-                <ul class="social">
-                    <li>
-                        <a class="facebook" href="#"></a>
-                    </li>
-                    <li>
-                        <a class="twitter" href="#"></a>
-                    </li>
-                    <li>
-                        <a class="linkedin" href="#"></a>
-                    </li>
-                    <li>
-                        <a class="instagram" href="#"></a>
-                    </li>
-                </ul>
-                <!-- SOCIAL -->
-
-                <!-- copy-text -->
-                <div class="copy-text">
-                    <p>&copy; 2015 Pixelwars</p>
-                </div>
-                <!-- copy-text -->
-
-            </div>
-            <!-- header-bottom -->
-        </div>
-        <!-- header-wrap -->
-    </header>
-    <!-- HEADER -->
-
-    <!-- .site-main -->
-    <div id="main" class="site-main">
 
         <!-- InstanceBeginEditable name="Page-Content" -->
         <!-- PAGE : HOME -->
@@ -97,9 +10,9 @@
                 <!-- .layout-medium -->
                 <div class="layout-medium">
 
-                    <h4>Hi, I am</h4>
-                    <h2>Jack Allen</h2>
-                    <h4>I am <strong id="typist-element" data-typist="a blogger., a wordpress lover., an adventurer.">a writer.</strong></h4>
+                    <h4>Welcome Back</h4>
+                    <h3>{{ Auth::user()->name }}</h3>
+                    <h6>لاتنسي ذكر الله:  <strong id="typist-element" data-typist="سبحان الله, لا اله الا الله والله اكبر, الحمد لله.">سبحان الله والحمد لله ولا اله الا الله والله اكبر</strong></h6>
 
                 </div>
                 <!-- .layout-medium -->
@@ -107,6 +20,7 @@
             <!-- .content -->
         </section>
         <!-- PAGE : HOME -->
+
         <!-- PAGE : ABOUT -->
         <section id="about" class="pt-page page-layout">
             <!-- .content -->
@@ -116,7 +30,7 @@
 
                     <!-- page-title -->
                     <h1 class="page-title">
-                        <i class="pe-7s-user"></i>about me
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>about me
                     </h1>
                     <!-- page-title -->
 
@@ -183,7 +97,7 @@
                             <!-- service -->
                             <div class="service">
                                 <!--<i class="pe-7s-scissors"></i>-->
-                                <img src="images/site/icon-04.png" alt="image"/>
+                                <img src="{{asset('them/profile/images/site/icon-04.png')}}" alt="image"/>
                                 <h4>Problem Solver</h4>
                                 <p>I have strong project management skills. It is a long established fact that a reader will be distracted by the readable content.</p>
                             </div>
@@ -503,10 +417,6 @@
         </section>
         <!-- PAGE : ABOUT -->
 
-
-
-
-
         <!-- PAGE : RESUME -->
         <section id="resume" class="pt-page page-layout">
             <!-- .content -->
@@ -517,7 +427,7 @@
 
                     <!-- page-title -->
                     <h1 class="page-title">
-                        <i class="pe-7s-id"></i>resume
+                        <i class="fa fa-address-card-o" aria-hidden="true"></i>resume
                     </h1>
                     <!-- page-title -->
 
@@ -739,7 +649,7 @@
 
                     <!-- page-title -->
                     <h1 class="page-title">
-                        <i class="pe-7s-glasses"></i>my works
+                        <i class="fa fa-camera-retro" aria-hidden="true"></i>my works
                     </h1>
                     <!-- page-title -->
 
@@ -932,12 +842,6 @@
         </section>
         <!-- PAGE : PORTFOLIO -->
 
-
-
-
-
-
-
         <!-- PAGE : BLOG -->
         <section id="blog" class="pt-page page-layout">
             <!-- .content -->
@@ -948,7 +852,7 @@
 
                     <!-- page-title -->
                     <h1 class="page-title">
-                        <i class="pe-7s-notebook"></i>from the blog
+                        <i class="fa fa-folder-open-o" aria-hidden="true"></i>from the blog
                     </h1>
                     <!-- page-title -->
 
@@ -1166,10 +1070,6 @@
         </section>
         <!-- PAGE : BLOG -->
 
-
-
-
-
         <!-- PAGE : CONTACT -->
         <section id="contact" class="pt-page page-layout contact light-text">
             <!-- .content -->
@@ -1180,7 +1080,7 @@
 
                     <!-- page-title -->
                     <h1 class="page-title">
-                        <i class="pe-7s-call"></i>contact me
+                        <i class="fa fa-phone" aria-hidden="true"></i>contact me
                     </h1>
                     <!-- page-title -->
 
@@ -1343,25 +1243,200 @@
         </section>
         <!-- PAGE : CONTACT -->
 
+        <!-- PAGE : myGallery -->
+        <section id="myGallery" class="pt-page page-layout contact light-text">
+            <!-- .content -->
+            <div class="content">
+                <!-- .layout-medium -->
+                <div class="layout-medium">
+
+                    <!-- page-title -->
+                    <h1 class="page-title">Edit Gallery</h1>
+                    <!-- page-title -->
+
+                    <!-- .contact-form -->
+                    <div class="contact-form">
+
+                        <form id="contact-form" enctype="multipart/form-data" class="validate-form" method="post" action="{{url('user/store_gallery')}}">
+                            @csrf
+                            <div class="form-group mb-2">
+                                <label for="Title">Title</label>
+                                <input type="text" name="title" class="form-control" id="Title" placeholder="Gallery Name">
+                            </div>
+
+                            <div class="form-group mb-2">
+                                <label for="cover">cover</label>
+                                <label class="custom-file-upload">
+                                    <input accept="image/*" name="cover" type='file' id="AddImg" />
+                                    <i class="fa fa-cloud-upload"></i> Custom Upload
+                                    <img id="ShowImg" src="#" alt="your image" />
+                                    <script>
+                                        AddImg.onchange = evt => {
+                                            const [file] = AddImg.files
+                                            if (file) {
+                                                ShowImg.src = URL.createObjectURL(file)
+                                            }
+                                        }
+                                    </script>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="Description">Description</label>
+                                <textarea class="form-control" name="description" id="Description" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
+
+                        </form>
+
+                    </div>
+                    <!-- .contact-form -->
+
+
+                    <!-- GOOGLE MAP -->
+                    <div class="map">
+                        <div data-latitude="-25.363882" data-longitude="131.044922" data-zoom="5" data-marker-image="{{asset('Them/site/marker.png')}}" id="map-canvas" class="map-canvas"></div>
+                    </div>
+                    <!-- GOOGLE MAP -->
+
+
+                </div>
+                <!-- .layout-medium -->
+            </div>
+            <!-- .content -->
+        </section>
+        <!-- PAGE : myGallery -->
+
+        @if($gallery_data > '0')
+        <!-- PAGE : Edit myGallery -->
+        <section id="EditMyGallery" class="pt-page page-layout contact light-text">
+            <!-- .content -->
+            <div class="content">
+                <!-- .layout-medium -->
+                <div class="layout-medium">
+
+                    <!-- page-title -->
+                    <h1 class="page-title">create Gallery</h1>
+                    <!-- page-title -->
+
+                    <!-- .contact-form -->
+                    <div class="contact-form">
+
+                        <form id="contact-form" enctype="multipart/form-data" class="validate-form" method="post" action="{{url('user/update_gallery')}}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="Title">Title</label>
+                                <input type="text" value="{{$gallery_data->title}}" name="title" class="form-control" id="Title" placeholder="Gallery Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cover">cover</label>
+                                <label class="custom-file-upload">
+                                    <input accept="image/*" name="cover" type='file' id="imgInp" />
+                                    <i class="fa fa-cloud-upload"></i> Custom Upload
+                                    <img id="blah" src="{{asset('images')}}/{{$gallery_data->cover}}" alt="your image" />
+                                    <script>imgInp.onchange = evt => {
+                                        const [file] = imgInp.files
+                                        if (file) {
+                                            blah.src = URL.createObjectURL(file)
+                                        }
+                                    }</script>
+                                </label>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="Description">Description</label>
+                                <textarea class="form-control" name="description" id="Description" rows="3">{{$gallery_data->description}}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">update my gallery</button>
+
+                        </form>
+
+                    </div>
+                    <!-- .contact-form -->
+
+
+                    <!-- GOOGLE MAP -->
+                    <div class="map">
+                        <div data-latitude="-25.363882" data-longitude="131.044922" data-zoom="5" data-marker-image="{{asset('Them/site/marker.png')}}" id="map-canvas" class="map-canvas"></div>
+                    </div>
+                    <!-- GOOGLE MAP -->
+
+
+                </div>
+                <!-- .layout-medium -->
+            </div>
+            <!-- .content -->
+        </section>
+        <!-- PAGE : Edit myGallery -->
+
+
+        <!-- PAGE : create Photos -->
+        <section id="createPhotos" class="pt-page page-layout contact light-text">
+            <!-- .content -->
+            <div class="content">
+                <!-- .layout-medium -->
+                <div class="layout-medium">
+
+                    <!-- page-title -->
+                    <h1 class="page-title">create Photos</h1>
+                    <!-- page-title -->
+
+                    <!-- .contact-form -->
+                    <div class="contact-form">
+
+                        <form id="contact-form" enctype="multipart/form-data" class="validate-form" method="post" action="{{url('user/storePhotos')}}">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="Title">Title</label>
+                                <input type="text" name="title" class="form-control" id="Title" placeholder="Gallery Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Description">Description</label>
+                                <textarea class="form-control" name="description" id="Description" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cover">Photo/s</label>
+                                <label class="custom-file-upload">
+                                    <input accept="image/*" name="images[]" type='file' id="imgInp" multiple/>
+                                    <i class="fa fa-cloud-upload"></i> Custom Upload
+                                    <img id="blah" src="#" alt="your image" />
+                                    <script>imgInp.onchange = evt => {
+                                            const [file] = imgInp.files
+                                            if (file) {
+                                                blah.src = URL.createObjectURL(file)
+                                            }
+                                        }</script>
+                                </label>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">update my gallery</button>
+
+                        </form>
+
+                    </div>
+                    <!-- .contact-form -->
+
+
+                    <!-- GOOGLE MAP -->
+                    <div class="map">
+                        <div data-latitude="-25.363882" data-longitude="131.044922" data-zoom="5" data-marker-image="{{asset('Them/site/marker.png')}}" id="map-canvas" class="map-canvas"></div>
+                    </div>
+                    <!-- GOOGLE MAP -->
+
+
+                </div>
+                <!-- .layout-medium -->
+            </div>
+            <!-- .content -->
+        </section>
+        <!-- PAGE : create Photos -->
+
+
         <!-- InstanceEndEditable -->
 
-    </div>
-    <!-- .site-main -->
-
-
-</div>
-<!-- PAGE -->
-
-
-<!-- InstanceBeginEditable name="Body-End-Content" -->
-
-
-<!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
-<div class="p-overlay"></div>
-<div class="p-overlay"></div>
-
-<!-- ALERT : used for contact form mail delivery alert -->
-<div class="site-alert animated"></div>
-<!-- InstanceEndEditable -->
-
+        @endif
 @endsection

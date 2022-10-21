@@ -17,9 +17,16 @@ class PhotosController extends Controller
         $photo_data = photos::all();
         return view('photos',compact('photo_data'));
     }
-    public function photo_detail()
+    public function photo_detail($id)
     {
-        return view('photo-detail');
+        $AllPhotos = photos::where('id',$id)->first();
+        $gallery_detail = Gallery::where('id',$AllPhotos->gallery_id)->first();
+
+        $array = explode('|', $AllPhotos->photo);
+        $cover = array_shift($array);
+
+        //return $AllPhotos;
+        return view('photo-detail',compact(['AllPhotos','gallery_detail','cover']));
     }
 
     /**
@@ -38,9 +45,25 @@ class PhotosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $input = $request->all();
+        $images = array();
+        if($files = $request->file('images')){
+            foreach($files as $file){
+                $name=$file->getClientOriginalName();
+                $file->move('images',$name);
+                $images[]=$name;
+            }
+        }
+        /*Insert your data*/
+        photos::insert( [
+            'gallery_id'    => "4",
+            'photo'         =>  implode("|",$images),
+            'title'         =>  $input['title'],
+            'description'   =>  $input['description'],
+            //you can put other insertion here
+        ]);
+        return redirect()->back();
     }
 
     /**

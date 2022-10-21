@@ -21,11 +21,11 @@
     <!-- STYLES -->
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/bootstrap.min.css')}}">
 
-{{----}}
+<!-- delete this tow link after complated all the icons -->
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/fonts/fontello/css/fontello.css')}}"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-{{----}}
+<!-- delete this tow link after complated all the icons -->
 
 
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/js/nprogress/nprogress.css')}}">
@@ -35,6 +35,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/align.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/main.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/768.css')}}">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{asset('Them/css/mycss.css')}}">
 
     <!-- INITIAL SCRIPTS -->
     <script src="{{asset('Them/profile/js/jquery-1.12.1.min.js')}}"></script>
@@ -55,9 +58,122 @@
 </head>
 
 <body>
+<!-- PAGE -->
+<div id="page" class="hfeed site">
+    <!-- HEADER -->
+    <header id="masthead" class="header" role="banner">
+        <a class="menu-toggle toggle-link"></a>
+        <h1 class="site-title mobile-title">{{Auth::user()->name}}</h1>
+        <!-- header-wrap -->
+        <div class="header-wrap">
+            <img src="{{asset('Them/profile/images/site/avatar.jpg')}}" alt="avatar">
+            <h1 class="site-title">{{Auth::user()->name}}</h1>
+            <!-- NAV MENU -->
+            <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+                <div class="nav-menu">
+                    <ul>
+                        <!-- InstanceBeginEditable name="Menu-Content" -->
+                        <li>
+                            <a href="#/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="#/about">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>About Me</a>
+                        </li>
+                        <li>
+                            <a href="#/resume">
+                                <i class="fa fa-address-card-o" aria-hidden="true"></i>Resume</a>
+                        </li>
+                        <li>
+                            <a href="#/portfolio">
+                                <i class="fa fa-camera-retro" aria-hidden="true"></i>Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#/blog">
+                                <i class="fa fa-folder-open-o" aria-hidden="true"></i>Blog</a>
+                        </li>
+                        <li>
+                            <a href="#/contact"><i class="fa fa-phone" aria-hidden="true"></i>Contact</a>
+                        </li>
+                        @if($gallery_data <= '0')
+                            <li>
+                                <a href="#/myGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>my gallery</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="#/EditMyGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit gallery</a>
+                            </li>
+                            <li>
+                                <a href="#/createPhotos"><i class="fa fa-picture-o" aria-hidden="true"></i>Create Photos</a>
+                            </li>
+                        @endif
+                        <!-- InstanceEndEditable -->
+                    </ul>
+                </div>
+            </nav>
+            <!-- NAV MENU -->
+            <!-- SEARCH -->
+            <div class="header-search">
+                <form role="search" method="get" id="search-form" action="#">
+                    <input type="text" value="" name="s" id="search" placeholder="enter word">
+                    <input type="submit" id="search-submit" title="Search" value="→">
+                </form>
+            </div>
+            <!-- SEARCH -->
 
+            <!-- header-bottom -->
+            <div class="header-bottom">
 
-@yield('content')
+                <!-- SOCIAL -->
+                <ul class="social">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+                <!-- SOCIAL -->
+
+                <!-- copy-text -->
+                <div class="copy-text">
+                    <p>&copy; 2015 Pixelwars</p>
+                </div>
+                <!-- copy-text -->
+
+            </div>
+            <!-- header-bottom -->
+        </div>
+        <!-- header-wrap -->
+    </header>
+    <!-- HEADER -->
+<!-- .site-main -->
+    <div id="main" class="site-main">
+
+    <!-- Content -->
+        @yield('content')
+    <!-- Content -->
+
+    </div>
+    <!-- .site-main -->
+
+</div>
+<!-- PAGE -->
+<!-- InstanceBeginEditable name="Body-End-Content" -->
+
+<!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
+<div class="p-overlay"></div>
+<div class="p-overlay"></div>
+
+<!-- ALERT : used for contact form mail delivery alert -->
+<div class="site-alert animated"></div>
+<!-- InstanceEndEditable -->
 
 <!-- SCRIPTS -->
 <script src="{{asset('Them/profile/js/jquery.address-1.5.min.js')}}"></script>
@@ -76,7 +192,7 @@
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"></script>-->
 <script src="{{asset('Them/profile/js/main.js')}}"></script>
-
+<script src="{{asset('Them/profile/js/myjavascriptcode.js')}}"></script>
 </body>
 </html>
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
-
+use Auth;
 class GalleryController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('user.gallery-profile');
+        $gallery_data = Gallery::first();
+        return view('user.gallery-profile',compact('gallery_data'));
     }
 
     /**
@@ -33,9 +34,23 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $request->validate([
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $coverName = time().'.'.$request->cover->extension();
+
+        $request->cover->move(public_path('images'), $coverName);
+
+        Gallery::create([
+            'user_id'       => Auth::user()->name,
+            'title'         => $request->title,
+            'cover'         => $coverName,
+            'description'   => $request->description,
+        ]);
+
+        return back()->with('success','You have successfully upload cover.');
+
     }
 
     /**
@@ -67,9 +82,25 @@ class GalleryController extends Controller
      * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery)
-    {
-        //
+    public function update(Request $request){
+        //return Auth::user()->id;
+        $data = Gallery::where('user_id', Auth::user()->id)->first();
+        //return $data->title;
+        $data->title = $request->title;
+        $data->description = $request->description;
+        if ($request->hasFile('cover')) {
+            $request->validate([
+                'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $coverName = time().'.'.$request->cover->extension();
+
+            $request->cover->move(public_path('images'), $coverName);
+
+            $data->cover = $coverName;
+        }
+        $data->update();
+        return redirect()->back();
     }
 
     /**

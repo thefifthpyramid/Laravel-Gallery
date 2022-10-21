@@ -20,7 +20,11 @@ Route::get('/', [PhotosController::class, 'index'] );
 Route::group(['middleware' => 'auth'], function (){
     Route::prefix('/user/')->group(function (){
         Route::get('profile',[GalleryController::class,'index']);
-        Route::get('GalleryCreate',[GalleryController::class,'create']);
+        Route::post('store_gallery',[GalleryController::class,'store'])->name('store_gallery');
+        Route::post('update_gallery',[GalleryController::class,'update']);
+
+        Route::post('storePhotos',[PhotosController::class,'store']);
+
     });
 });
 
@@ -33,7 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // photo Gallery
 Route::get('/photos', [PhotosController::class, 'index'])->name('photos');
-Route::get('/photo-detail', [PhotosController::class, 'photo_detail'])->name('photo-detail');
+Route::get('/photo-detail/{id}', [PhotosController::class, 'photo_detail'])->name('photo-detail');
 
 
 //Video Gallery

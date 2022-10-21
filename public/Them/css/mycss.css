@@ -1,0 +1,26 @@
+.form-group{
+    margin-bottom: 20px;
+}
+form input[type="file"] {
+    display: none;
+}
+form .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+form img{
+    width: 100%;
+    max-width:100%;
+    margin: 2px;
+}
+
+figure.effect-ming img.img-fluid{
+    height:255px;
+    width:100%
+}
+.photo-detal-cover{
+    width: 100%;
+    height: 600px;
+}
