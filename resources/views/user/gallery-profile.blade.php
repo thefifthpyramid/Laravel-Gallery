@@ -641,7 +641,7 @@
         <!-- PAGE : RESUME -->
 
         <!-- PAGE : PORTFOLIO -->
-        <section id="portfolio" class="pt-page page-layout portfolio">
+        <section id="galleryImage" class="pt-page page-layout portfolio">
             <!-- .content -->
             <div class="content">
                 <!-- .layout-medium -->
@@ -649,7 +649,7 @@
 
                     <!-- page-title -->
                     <h1 class="page-title">
-                        <i class="fa fa-camera-retro" aria-hidden="true"></i>my works
+                        <i class="fa fa-camera-retro" aria-hidden="true"></i>All my photos
                     </h1>
                     <!-- page-title -->
 
@@ -673,23 +673,29 @@
                     <!-- PORTFOLIO -->
                     <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="340">
 
+                        @foreach($photo_data as $Alldata)
+                            @php
+                                $imgs = explode('|', $Alldata->photo);
+                            @endphp
+                            @foreach($imgs as $data)
                         <!-- portfolio-item -->
                         <div class="media-cell illustration hentry">
 
                             <div class="media-box">
-                                <img src="{{asset('Them/profile/images/portfolio/01.jpg')}}" alt="portfolio-post">
+                                <img src="{{asset('images')}}/{{$data}}" alt="portfolio-post">
                                 <div class="mask"></div>
                                 <a href="portfolio-item-01.html" class="ajax"></a>
                             </div>
 
                             <div class="media-cell-desc">
-                                <h3>Bookcard</h3>
-                                <p class="category">a vcard theme</p>
+                                <h3>{{$Alldata->title}}</h3>
+                                <p class="category">{{$Alldata->created_at}}</p>
                             </div>
 
                         </div>
                         <!-- portfolio-item -->
-
+                        @endforeach
+                        @endforeach
 
                         <!-- portfolio-item -->
                         <div class="media-cell media hentry">
@@ -707,7 +713,6 @@
 
                         </div>
                         <!-- portfolio-item -->
-
 
                         <!-- portfolio-item - lightbox video -->
                         <div class="media-cell illustration video hentry">
@@ -728,7 +733,6 @@
                         </div>
                         <!-- portfolio-item - lightbox video -->
 
-
                         <!-- portfolio-item - lightbox image -->
                         <div class="media-cell media image hentry">
                             <div class="media-box">
@@ -744,7 +748,6 @@
                             </div>
                         </div>
                         <!-- portfolio-item - lightbox image -->
-
 
                         <!-- portfolio-item - lightbox soundcloud -->
                         <div class="media-cell illustration audio hentry">
@@ -762,7 +765,6 @@
                             </div>
                         </div>
                         <!-- portfolio-item - lightbox soundcloud -->
-
 
                         <!-- portfolio-item - lightbox gallery -->
                         <div class="media-cell media image hentry">
@@ -782,7 +784,6 @@
                         </div>
                         <!-- portfolio-item - lightbox gallery -->
 
-
                         <!-- portfolio-item - custom url -->
                         <div class="media-cell illustration url hentry">
                             <div class="media-box">
@@ -796,7 +797,6 @@
                             </div>
                         </div>
                         <!-- portfolio-item - custom url -->
-
 
                         <!-- portfolio-item -->
                         <div class="media-cell media hentry">
@@ -812,7 +812,6 @@
                         </div>
                         <!-- portfolio-item -->
 
-
                         <!-- portfolio-item -->
                         <div class="media-cell media hentry">
                             <div class="media-box">
@@ -827,14 +826,11 @@
                         </div>
                         <!-- portfolio-item -->
 
-
-
-
                     </div>
                     <!-- PORTFOLIO -->
-
-
-
+                    <div class="tm-paging d-flex">
+                        {{ $photo_data->links("pagination::bootstrap-4") }}
+                    </div>
                 </div>
                 <!-- .layout-medium -->
             </div>
@@ -1306,7 +1302,7 @@
         </section>
         <!-- PAGE : myGallery -->
 
-        @if($gallery_data > '0')
+        @if(Auth::user()->gallery)
         <!-- PAGE : Edit myGallery -->
         <section id="EditMyGallery" class="pt-page page-layout contact light-text">
             <!-- .content -->
@@ -1315,7 +1311,8 @@
                 <div class="layout-medium">
 
                     <!-- page-title -->
-                    <h1 class="page-title">create Gallery</h1>
+                    <h1 class="page-title">Edit Gallery</h1>
+                    <h3 class="page-title">{{Auth::user()->gallery->title ?? ""}}</h3>
                     <!-- page-title -->
 
                     <!-- .contact-form -->
@@ -1325,7 +1322,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="Title">Title</label>
-                                <input type="text" value="{{$gallery_data->title}}" name="title" class="form-control" id="Title" placeholder="Gallery Name">
+                                <input type="text" value="{{Auth::user()->gallery->title ?? ""}}" name="title" class="form-control" id="Title" placeholder="Gallery Name">
                             </div>
 
                             <div class="form-group">
@@ -1333,7 +1330,7 @@
                                 <label class="custom-file-upload">
                                     <input accept="image/*" name="cover" type='file' id="imgInp" />
                                     <i class="fa fa-cloud-upload"></i> Custom Upload
-                                    <img id="blah" src="{{asset('images')}}/{{$gallery_data->cover}}" alt="your image" />
+                                    <img id="blah" src="{{asset('images')}}/{{Auth::user()->gallery->cover}}" alt="your image" />
                                     <script>imgInp.onchange = evt => {
                                         const [file] = imgInp.files
                                         if (file) {
@@ -1345,7 +1342,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Description">Description</label>
-                                <textarea class="form-control" name="description" id="Description" rows="3">{{$gallery_data->description}}</textarea>
+                                <textarea class="form-control" name="description" id="Description" rows="3">{{Auth::user()->gallery->description}}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">update my gallery</button>
 

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('gallery_id');
+            $table->bigInteger('gallery_id');
             $table->string('title');
-            $table->string('photo');
+            $table->text('photo');
             $table->string('description');
             $table->timestamps();
         });

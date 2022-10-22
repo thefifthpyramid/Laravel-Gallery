@@ -14,8 +14,10 @@ class photos extends Model
         'photo',
         'description',
     ];
-    public function photo()
-    {
+    public function gallery(){
         return $this->belongsTo(Gallery::class);
     }
+//    public function user(){
+//        return $this->belongsTo(User::class);
+//    }
 }

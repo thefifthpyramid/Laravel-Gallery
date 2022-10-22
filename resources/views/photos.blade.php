@@ -8,6 +8,7 @@
             </button>
         </form>
     </div>
+
     {{--first row--}}
     <div class="container-fluid tm-container-content tm-mt-60">
         <div class="row mb-4">
@@ -45,19 +46,50 @@
         </div> <!-- row -->
         <div class="row tm-mb-90">
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
-                <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
-                <div class="tm-paging d-flex">
-                    <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">4</a>
-                </div>
-                <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
+
             </div>
         </div>
     </div> <!-- container-fluid, tm-container-content -->
 
     {{--Second row--}}
+    <div class="container-fluid tm-container-content tm-mt-60">
+        <div class="row mb-4">
+            <h2 class="col-6 tm-text-primary">
+                Users Gallery
+            </h2>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+                <form action="" class="tm-text-primary">
+                    Page <input type="text" value="1" size="1" class="tm-input-paging tm-text-primary"> of 200
+                </form>
+            </div>
+        </div>
+        <div class="row tm-mb-90 tm-gallery">
+            @foreach($All_user as $user)
+                @if($user->gallery)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                        <figure class="effect-ming tm-video-item">
+                            <img src="{{asset('images')}}/{{$user->gallery->cover ?? ""}}" alt="Image" class="img-fluid">
+                            <figcaption class="d-flex align-items-center justify-content-center">
+                                <h2>{{$user->name}}</h2>
+                                <a href="{{asset('images')}}/{{$user->gallery->cover ?? ""}}" target="_black">View more</a>
+                            </figcaption>
+                        </figure>
+                        <div class="d-flex justify-content-between tm-text-gray">
+                            <span class="tm-text-gray-light">By:{{$user->name}}</span>
+                            <span>9,906 views</span>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div> <!-- row -->
+        <div class="row tm-mb-90">
+            <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
+
+            </div>
+        </div>
+    </div> <!-- container-fluid, tm-container-content -->
+
+    {{--Third row--}}
     <div class="container-fluid tm-container-content tm-mt-60">
         <div class="row mb-4">
             <h2 class="col-6 tm-text-primary">
@@ -75,19 +107,19 @@
                     $imgs = explode('|', $Alldata->photo);
                 @endphp
                 @foreach($imgs as $data)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                    <figure class="effect-ming tm-video-item">
-                        <img src="{{asset('images')}}/{{$data}}" alt="Image" class="img-fluid">
-                        <figcaption class="d-flex align-items-center justify-content-center">
-                            <h2>{{$Alldata->title}}</h2>
-                            <a href="{{$Alldata->id}}" target="_black">View more</a>
-                        </figcaption>
-                    </figure>
-                    <div class="d-flex justify-content-between tm-text-gray">
-                        <span class="tm-text-gray-light">{{$Alldata->created_at}}</span>
-                        <span>9,906 views</span>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                        <figure class="effect-ming tm-video-item">
+                            <img src="{{asset('images')}}/{{$data}}" alt="Image" class="img-fluid">
+                            <figcaption class="d-flex align-items-center justify-content-center">
+                                <h2>{{$Alldata->title}}</h2>
+                                <a href="{{asset('images')}}/{{$data}}" target="_black">View more</a>
+                            </figcaption>
+                        </figure>
+                        <div class="d-flex justify-content-between tm-text-gray">
+                            <span class="tm-text-gray-light">{{$Alldata->gallery->title}}</span>
+                            <span>9,906 views</span>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             @endforeach
         </div> <!-- row -->
@@ -95,10 +127,7 @@
             <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
                 <div class="tm-paging d-flex">
-                    <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                    <a href="javascript:void(0);" class="tm-paging-link">4</a>
+                    {{ $photo_data->links("pagination::bootstrap-4") }}
                 </div>
                 <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
             </div>

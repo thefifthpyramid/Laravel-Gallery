@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\photos;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
 
@@ -14,8 +15,9 @@ class PhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $photo_data = photos::all();
-        return view('photos',compact('photo_data'));
+        $photo_data = photos::paginate(1);
+        $All_user = User::all();
+        return view('photos',compact(['photo_data','All_user']));
     }
     public function photo_detail($id)
     {

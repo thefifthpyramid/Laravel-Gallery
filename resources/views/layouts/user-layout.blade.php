@@ -77,27 +77,23 @@
                             <a href="#/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
                         </li>
                         <li>
-                            <a href="#/about">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>About Me</a>
+                            <a href="#/about"><i class="fa fa-user-circle-o" aria-hidden="true"></i>About Me</a>
                         </li>
                         <li>
-                            <a href="#/resume">
-                                <i class="fa fa-address-card-o" aria-hidden="true"></i>Resume</a>
+                            <a href="#/resume"><i class="fa fa-address-card-o" aria-hidden="true"></i>Resume</a>
                         </li>
                         <li>
-                            <a href="#/portfolio">
-                                <i class="fa fa-camera-retro" aria-hidden="true"></i>Portfolio</a>
+                            <a href="#/galleryImage"><i class="fa fa-camera-retro" aria-hidden="true"></i>Images</a>
                         </li>
                         <li>
-                            <a href="#/blog">
-                                <i class="fa fa-folder-open-o" aria-hidden="true"></i>Blog</a>
+                            <a href="#/blog"><i class="fa fa-folder-open-o" aria-hidden="true"></i>Blog</a>
                         </li>
                         <li>
                             <a href="#/contact"><i class="fa fa-phone" aria-hidden="true"></i>Contact</a>
                         </li>
-                        @if($gallery_data <= '0')
+                        @if(Auth::user()->gallery <= '0')
                             <li>
-                                <a href="#/myGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>my gallery</a>
+                                <a href="#/myGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Create gallery</a>
                             </li>
                         @else
                             <li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\photos;
 use Illuminate\Http\Request;
 use Auth;
 class GalleryController extends Controller
@@ -14,8 +15,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $gallery_data = Gallery::first();
-        return view('user.gallery-profile',compact('gallery_data'));
+        $gallery_data = Gallery::where('user_id',Auth::user()->id);
+        //$gallery_data = Gallery::first();
+        $photo_data = photos::paginate(5);
+        return view('user.gallery-profile',compact(['gallery_data','photo_data']));
     }
 
     /**
@@ -43,7 +46,7 @@ class GalleryController extends Controller
         $request->cover->move(public_path('images'), $coverName);
 
         Gallery::create([
-            'user_id'       => Auth::user()->name,
+            'user_id'       => Auth::user()->id,
             'title'         => $request->title,
             'cover'         => $coverName,
             'description'   => $request->description,

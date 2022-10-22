@@ -19,6 +19,7 @@ Route::get('/', [PhotosController::class, 'index'] );
 
 Route::group(['middleware' => 'auth'], function (){
     Route::prefix('/user/')->group(function (){
+        Route::get('/',[GalleryController::class,'index']);
         Route::get('profile',[GalleryController::class,'index']);
         Route::post('store_gallery',[GalleryController::class,'store'])->name('store_gallery');
         Route::post('update_gallery',[GalleryController::class,'update']);
