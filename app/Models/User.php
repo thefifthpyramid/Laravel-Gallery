@@ -27,9 +27,9 @@ class User extends Authenticatable
         return $this->hasOne(Gallery::class,'user_id','id');
     }
 
-//    public function photos(){
-//        return $this->hasMany(photos::class);
-//    }
+    public function photos(){
+        return $this->hasMany(photos::class);
+    }
 // End Table relationship
     /**
      * The attributes that should be hidden for serialization.

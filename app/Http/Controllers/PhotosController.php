@@ -15,7 +15,7 @@ class PhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $photo_data = photos::paginate(1);
+        $photo_data = photos::paginate(5);
         $All_user = User::all();
         return view('photos',compact(['photo_data','All_user']));
     }

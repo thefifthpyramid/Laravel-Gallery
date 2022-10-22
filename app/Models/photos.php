@@ -17,7 +17,7 @@ class photos extends Model
     public function gallery(){
         return $this->belongsTo(Gallery::class);
     }
-//    public function user(){
-//        return $this->belongsTo(User::class);
-//    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
