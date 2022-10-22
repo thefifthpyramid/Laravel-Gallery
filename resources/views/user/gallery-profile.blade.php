@@ -697,9 +697,9 @@
 
                     </div>
                     <!-- PORTFOLIO -->
-                    <div class="tm-paging d-flex">
-                        {{ $photo_data->links("pagination::bootstrap-4") }}
-                    </div>
+{{--                    <div class="tm-paging d-flex">--}}
+{{--                        {{ $photo_data->links("pagination::bootstrap-4") }}--}}
+{{--                    </div>--}}
                 </div>
                 <!-- .layout-medium -->
             </div>

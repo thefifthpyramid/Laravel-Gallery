@@ -17,7 +17,8 @@ class PhotosController extends Controller
     public function index(){
         $photo_data = photos::paginate(5);
         $All_user = User::all();
-        return view('photos',compact(['photo_data','All_user']));
+        $userGallery = User::with('gallery')->get();
+        return view('photos',compact(['photo_data','All_user','userGallery']));
     }
     public function photo_detail($id)
     {
