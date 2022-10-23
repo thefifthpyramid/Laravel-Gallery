@@ -19,6 +19,7 @@
             </div>
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                 <div class="tm-bg-gray tm-video-details">
+                    <strong>{{$AllPhotos->title}}</strong><hr>
                     <p class="mb-4">{{$AllPhotos->description}}</p>
                     <div class="text-center mb-5">
                         <a href="{{asset('images')}}/{{$cover}}" download="{{$AllPhotos->title}}_{{$cover}}" class="btn btn-primary tm-btn-big">Download</a>
@@ -50,7 +51,7 @@
         </div>
         <div class="row mb-4">
             <h2 class="col-12 tm-text-primary">
-                Related Photos
+                All collection photos
             </h2>
         </div>
         <div class="row mb-3 tm-gallery">
