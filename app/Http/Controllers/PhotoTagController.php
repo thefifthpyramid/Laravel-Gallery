@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tag;
-use App\Models\photos;
-use App\Models\Gallery;
-use App\Models\User;
+use App\Models\PhotoTag;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class PhotoTagController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        //$photo = photos::with('tags')->first();
-        //dd($photo);
-        //$allTags = photos::with('tags')->get();
-        $tags = tag::all();
-        return view('user.tags.tags',compact(['tags']));
+    public function index()
+    {
+        //
     }
 
     /**
@@ -30,8 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-
-        return view('user.tags.create');
+        //
     }
 
     /**
@@ -42,20 +35,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-
-        tag::create([
-            'name' => $request->name
-        ]);
-        return redirect('/user/tags#/tags');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tag  $tag
+     * @param  \App\Models\PhotoTag  $photoTag
      * @return \Illuminate\Http\Response
      */
-    public function show(tag $tag)
+    public function show(PhotoTag $photoTag)
     {
         //
     }
@@ -63,10 +52,10 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\tag  $tag
+     * @param  \App\Models\PhotoTag  $photoTag
      * @return \Illuminate\Http\Response
      */
-    public function edit(tag $tag)
+    public function edit(PhotoTag $photoTag)
     {
         //
     }
@@ -75,10 +64,10 @@ class TagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tag  $tag
+     * @param  \App\Models\PhotoTag  $photoTag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tag $tag)
+    public function update(Request $request, PhotoTag $photoTag)
     {
         //
     }
@@ -86,10 +75,10 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tag  $tag
+     * @param  \App\Models\PhotoTag  $photoTag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tag $tag)
+    public function destroy(PhotoTag $photoTag)
     {
         //
     }

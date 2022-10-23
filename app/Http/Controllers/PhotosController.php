@@ -6,6 +6,7 @@ use App\Models\photos;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use Auth;
 
 class PhotosController extends Controller
 {
@@ -39,7 +40,7 @@ class PhotosController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.photo.create');
     }
 
     /**
@@ -61,12 +62,13 @@ class PhotosController extends Controller
         /*Insert your data*/
         photos::insert( [
             'gallery_id'    => "4",
+            'user_id'    => Auth::user()->id,
             'photo'         =>  implode("|",$images),
             'title'         =>  $input['title'],
             'description'   =>  $input['description'],
             //you can put other insertion here
         ]);
-        return redirect()->back();
+        return redirect('user#/home');
     }
 
     /**

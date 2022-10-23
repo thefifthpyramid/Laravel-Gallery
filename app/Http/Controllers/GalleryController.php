@@ -15,10 +15,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $gallery_data = Gallery::where('user_id',Auth::user()->id);
+
         //$gallery_data = Gallery::first();
         $photo_data = photos::paginate(5);
-        return view('user.gallery-profile',compact(['gallery_data','photo_data']));
+        return view('user.home',compact(['photo_data']));
     }
 
     /**
@@ -28,7 +28,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.gallery.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class GalleryController extends Controller
             'description'   => $request->description,
         ]);
 
-        return back()->with('success','You have successfully upload cover.');
+        return redirect('user#/home')->with('success','You have successfully upload cover.');
 
     }
 
@@ -75,7 +75,8 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
-        //
+        $gallery_data = Gallery::where('user_id',Auth::user()->id);
+        return view('user.gallery.edit',compact('gallery_data'));
     }
 
     /**
@@ -103,7 +104,7 @@ class GalleryController extends Controller
             $data->cover = $coverName;
         }
         $data->update();
-        return redirect()->back();
+        return redirect('user#/home');
     }
 
     /**

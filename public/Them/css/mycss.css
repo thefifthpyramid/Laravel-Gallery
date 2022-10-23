@@ -51,4 +51,37 @@ figure.effect-ming img.img-fluid{
     background-color: #009999;
     color: #fff;
 }
-
+/*.admin-page{*/
+/*    background-color: white;*/
+/*    padding:0 100px;*/
+/*}*/
+/*.modern-layout .site-main{*/
+/*    overflow:scroll;*/
+/*    height: 100%;*/
+/*    margin: auto;*/
+/*    !*width: 960px;*!*/
+/*}!* PAGE BACKGROUNDS *!*/
+/*.one-page-layout .site-main > .section:nth-of-type(1) {*/
+/*    background-color: #2E2F2D;*/
+/*}*/
+/*.one-page-layout .site-main > .section:nth-of-type(2) {*/
+/*    background-color: #ECF0F0;*/
+/*}*/
+/*.one-page-layout .site-main > .section:nth-of-type(3) {*/
+/*    background-color: #EBF0DF;*/
+/*}*/
+/*.one-page-layout .site-main > .section:nth-of-type(4) {*/
+/*    background-color: #60d7a9;*/
+/*}*/
+/*.one-page-layout .site-main > .section:nth-of-type(5) {*/
+/*    background-color: #E5DCC5;*/
+/*}*/
+/*.one-page-layout .site-main > .section:nth-of-type(6) {*/
+/*    background-color: #D6E2E0;*/
+/*}*/
+.contact-form table{
+    width:100%
+}
+table ,table td,table tr,table th{
+    border:1px solid red
+}

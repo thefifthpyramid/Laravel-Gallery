@@ -21,11 +21,11 @@
     <!-- STYLES -->
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/bootstrap.min.css')}}">
 
-<!-- delete this tow link after complated all the icons -->
+    <!-- delete this tow link after complated all the icons -->
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/css/fonts/fontello/css/fontello.css')}}"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- delete this tow link after complated all the icons -->
+    <!-- delete this tow link after complated all the icons -->
 
 
     <link rel="stylesheet" type="text/css" href="{{asset('Them/profile/js/nprogress/nprogress.css')}}">
@@ -74,14 +74,29 @@
                     <ul>
                         <!-- InstanceBeginEditable name="Menu-Content" -->
                         <li>
-                            <a href="#/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                            <a href="{{url('/user')}}#/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
                         </li>
+                        @if(Auth::user()->gallery <= '0')
+                            <li>
+                                <a href="{{url('/user/gallery/create')}}#/myGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Create gallery</a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{url('/user/gallery/edit')}}#/EditMyGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit gallery</a>
+                            </li>
+                            <li>
+                                <a href="{{url('/user/photo/create')}}#/createPhotos"><i class="fa fa-picture-o" aria-hidden="true"></i>Create Photos</a>
+                            </li>
+                        @endif
                         <li>
-                            <a href="#/about"><i class="fa fa-user-circle-o" aria-hidden="true"></i>About Me</a>
+                            <a href="{{url('/user/tags')}}#/tags"><i class="fa fa-tags" aria-hidden="true"></i>Tags</a>
                         </li>
-                        <li>
-                            <a href="#/resume"><i class="fa fa-address-card-o" aria-hidden="true"></i>Resume</a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="#/about"><i class="fa fa-user-circle-o" aria-hidden="true"></i>About Me</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#/resume"><i class="fa fa-address-card-o" aria-hidden="true"></i>Resume</a>--}}
+{{--                        </li>--}}
                         <li>
                             <a href="#/galleryImage"><i class="fa fa-camera-retro" aria-hidden="true"></i>Images</a>
                         </li>
@@ -91,18 +106,7 @@
                         <li>
                             <a href="#/contact"><i class="fa fa-phone" aria-hidden="true"></i>Contact</a>
                         </li>
-                        @if(Auth::user()->gallery <= '0')
-                            <li>
-                                <a href="#/myGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Create gallery</a>
-                            </li>
-                        @else
-                            <li>
-                                <a href="#/EditMyGallery"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit gallery</a>
-                            </li>
-                            <li>
-                                <a href="#/createPhotos"><i class="fa fa-picture-o" aria-hidden="true"></i>Create Photos</a>
-                            </li>
-                        @endif
+
                         <!-- InstanceEndEditable -->
                     </ul>
                 </div>
@@ -149,12 +153,12 @@
         <!-- header-wrap -->
     </header>
     <!-- HEADER -->
-<!-- .site-main -->
+    <!-- .site-main -->
     <div id="main" class="site-main">
 
-    <!-- Content -->
+        <!-- Content -->
         @yield('content')
-    <!-- Content -->
+        <!-- Content -->
 
     </div>
     <!-- .site-main -->
@@ -191,4 +195,3 @@
 <script src="{{asset('Them/profile/js/myjavascriptcode.js')}}"></script>
 </body>
 </html>
-
