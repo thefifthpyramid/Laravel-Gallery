@@ -179,5 +179,7 @@
         $('body').addClass('loaded');
     });
 </script>
+
+<script src="{{asset('them/js/myjavascriptcode.js')}}"></script>
 </body>
 </html>

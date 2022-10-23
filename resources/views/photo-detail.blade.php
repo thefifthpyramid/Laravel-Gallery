@@ -11,20 +11,17 @@
 
     <div class="container-fluid tm-container-content tm-mt-60">
         <div class="row mb-4">
-            <h2 class="col-12 tm-text-primary">Gallery Name : {{$gallery_detail->user_id}}</h2>
+            <h2 class="col-12 tm-text-primary">Gallery Name : {{$gallery_detail->title}}</h2>
         </div>
         <div class="row tm-mb-90">
             <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
-
-                <img src="{{asset('images')}}/{{$cover}}" alt="Image" class="img-fluid photo-detal-cover">
+                <img src="{{asset('images')}}/{{$cover}}" id="main_cover" alt="Image" class="img-fluid photo-detal-cover">
             </div>
             <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
                 <div class="tm-bg-gray tm-video-details">
-                    <p class="mb-4">
-                        Please support us by making <a href="https://paypal.me/templatemo" target="_parent" rel="sponsored">a PayPal donation</a>. Nam ex nibh, efficitur eget libero ut, placerat aliquet justo. Cras nec varius leo.
-                    </p>
+                    <p class="mb-4">{{$AllPhotos->description}}</p>
                     <div class="text-center mb-5">
-                        <a href="#" class="btn btn-primary tm-btn-big">Download</a>
+                        <a href="{{asset('images')}}/{{$cover}}" download="{{$AllPhotos->title}}_{{$cover}}" class="btn btn-primary tm-btn-big">Download</a>
                     </div>
                     <div class="mb-4 d-flex flex-wrap">
                         <div class="mr-4 mb-2">
@@ -61,12 +58,11 @@
                 $imgs = explode('|', $AllPhotos->photo);
             @endphp
             @foreach($imgs as $photoItem)
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5 sub_image">
                 <figure class="effect-ming tm-video-item">
-                    <img src="{{asset('images')}}/{{$photoItem}}" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Hangers</h2>
-                        <a href="#">View more</a>
+                    <img src="{{asset('images')}}/{{$photoItem}}" alt="Image" class="img-fluid ">
+                    <figcaption class="d-flex align-items-center justify-content-center ">
+                        <h2>{{$AllPhotos->title}}</h2>
                     </figcaption>
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
