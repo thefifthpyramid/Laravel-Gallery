@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //User Gallery
 //Route::get('/photos', [PhotosController::class, 'index'])->name('photos');
+Route::get('/tags', [TagController::class, 'index'])->name('tags');
+
 
 // photo Gallery
 Route::get('/photos', [PhotosController::class, 'index'])->name('photos');
